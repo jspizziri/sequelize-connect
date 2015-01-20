@@ -1,1 +1,3 @@
-module.exports = require('./lib/singleton')(config);
+var singleton = require('./lib/singleton');
+
+module.exports = singleton.getInstance(config);
