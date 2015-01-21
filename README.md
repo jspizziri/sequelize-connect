@@ -21,7 +21,7 @@ orm.sequelize
 Now you can access the sequelize instance wherever you need:
 
 ```
-var orm = require('sequelize-singleton');
+var orm = require('sequelize-singleton')();
 
 
 ...
