@@ -1,6 +1,6 @@
 {
   "name": "sequelize-singleton",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "author": "Jacob Spizziri <jacob.spizziri@gmail.com> (https://github.com/jspizziri)",
   "license": "BSD-2-Clause",
   "description": "A simple singleton wrapper for the sequelize ORM, making it easier to configure and build models.",
