@@ -16,7 +16,7 @@ var orm = require('sequelize-singleton')();
 
 ...
 
-var User = sequelize.define('User', {
+var User = orm.sequelize.define('User', {
   username: orm.DataTypes.STRING,
   password: orm.DataTypes.STRING
 });
