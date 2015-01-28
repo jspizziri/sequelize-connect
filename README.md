@@ -1,6 +1,11 @@
-sequelize-singleton is a simple singleton wrapper for the sequelize ORM, making it easier to configure and build models.
+# sequelize-singleton
 
-# Example Usage
+sequelize-singleton is a simple singleton wrapper for the sequelize ORM, making it easier to configure and build models with Sequelize.
+
+* [Configuring sequelize-singleton](#configuring-sequelize-singleton)
+* [Custom Matcher](#custom-matcher)
+* [Accessing Sequelize](#accessing-sequelize)
+* [Defining Models](#defining-models)
 
 ## Configuring sequelize-singleton
 
