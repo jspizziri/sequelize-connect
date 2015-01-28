@@ -9,7 +9,7 @@ sequelize-singleton is a simple singleton wrapper for the sequelize ORM, making 
 
 ## Configuring sequelize-singleton
 
-The  sequelize-singleton ```connect()``` argument accepts the same parameters as the Sequelize() object. It is important to configure the ```discover``` array to the set of paths where your models should be discovered.
+The  sequelize-singleton ```connect()``` argument accepts the same parameters as the Sequelize() object. It is important to configure the ```discover``` array of the set of paths where your models should be discovered.
 ```
 // app.js
 var orm 		= require('sequelize-singleton');
