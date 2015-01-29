@@ -9,7 +9,7 @@ sequelize-singleton is a simple singleton wrapper for the sequelize ORM, making 
 
 ## Configuring sequelize-singleton
 
-The  sequelize-singleton ```connect()``` argument accepts the same parameters as the Sequelize() object. It is important to configure the ```discover``` array of the set of paths where your models should be discovered.
+The  sequelize-singleton ```connect()``` method accepts the same parameters as the Sequelize() object. It is important to configure the ```discover``` array of the set of paths where your models should be discovered.
 ```
 // app.js
 var orm 		= require('sequelize-singleton');
@@ -24,10 +24,12 @@ orm.connect(
     port:    3306
   });
 ```
-Upon ```connect()``` sequelize-singleton will SYNCHRONOUSLY recurse through the provided file paths looking for any files with the naming convention ```*.model.js```.
+Upon ```connect()``` sequelize-singleton will ***SYNCHRONOUSLY recurse*** through all of the subfolders located at the provided file paths looking for any files with the naming default convention ```*.model.js```.
 
 ## Custom matcher
-Alternatively you can define a custom matching function which returns a ```boolean``` and attach it to:
+If you prefer to define your own naming convention instead of the default you can create a custom matching function which receives the file name as the parameter returns a ```boolean``` indicating if sequelize-singleton should attempt to load the file as a model. 
+
+This function should be attached to ```matcher``` like so:
 
 ```
 orm.matcher = function(file){
