@@ -79,7 +79,7 @@ module.exports = function(sequelize, DataTypes) {
 ```
 
 
-## Custom Logger 
+## Logging 
 
 Logging can be turned off by setting `orm.logger = false`. Additionally, a custom logging function can be defined, which is passed a parameter `log`. E.g.
 
