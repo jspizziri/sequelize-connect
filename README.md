@@ -6,6 +6,7 @@ sequelize-singleton is a simple singleton wrapper for the sequelize ORM, making 
 * [Custom Matcher](#custom-matcher)
 * [Accessing Sequelize](#accessing-sequelize)
 * [Defining Models](#defining-models)
+* [Logging](#logging)
 
 ## Configuring sequelize-singleton
 
@@ -75,4 +76,15 @@ module.exports = function(sequelize, DataTypes) {
   return User;
 };
 
+```
+
+
+## Custom Logger 
+
+Logging can be turned off by setting `orm.logger = false`. Additionally, a custom logging function can be defined, which is passed a parameter `log`. E.g.
+
+```
+orm.logger = function(log){
+  //do some sweet logging stuff here
+}
 ```
