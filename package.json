@@ -19,6 +19,6 @@
   ],
   "dependencies" : {},
   "peerDependencies": {
-    "sequelize": "~2.0"
+    "sequelize": ">=2.0"
   }
 }
