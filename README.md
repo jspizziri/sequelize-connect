@@ -1,36 +1,36 @@
-# sequelize-singleton
+# sequelize-connect
 
-sequelize-singleton is a simple singleton wrapper for the sequelize ORM, making it easier to configure and build models with Sequelize.
+sequelize-connect is a simple singleton wrapper for the sequelize ORM, making it easier to configure and build models with Sequelize.
 
-* [Configuring sequelize-singleton](#configuring-sequelize-singleton)
+* [Configuring sequelize-connect](#configuring-sequelize-connect)
 * [Custom Matcher](#custom-matcher)
 * [Accessing Sequelize](#accessing-sequelize)
 * [Defining Models](#defining-models)
 * [Logging](#logging)
 
-## Configuring sequelize-singleton
+## Configuring sequelize-connect
 
-***NOTE:*** `sequelize-singleton` must be configured upon app initialization, prior to [accessing your models](#accessing-sequelize)
+***NOTE:*** `sequelize-connect` must be configured upon app initialization, prior to [accessing your models](#accessing-sequelize)
 
-The  sequelize-singleton `connect()` method accepts the same parameters as the Sequelize() object `database, username, password, options`. It is important to configure the `discover` array of the set of paths where your models should be discovered.
+The  sequelize-connect `connect()` method accepts the same parameters as the Sequelize() object `database, username, password, options`. It is important to configure the `discover` array of the set of paths where your models should be discovered.
 ```js
 // app.js
-var orm 		= require('sequelize-singleton');
+var orm 		= require('sequelize-connect');
 
 orm.discover = [__dirname + '/models'];
 orm.connect(
   'test-db',
   'test-user',
-  'secret1234', 
+  'secret1234',
   {
     dialect: "mysql",
     port:    3306
   });
 ```
-Upon `connect()` sequelize-singleton will ***SYNCHRONOUSLY recurse*** through all of the subfolders located at the provided file paths looking for any files with the naming default convention `*.model.js`.
+Upon `connect()` sequelize-connect will ***SYNCHRONOUSLY recurse*** through all of the subfolders located at the provided file paths looking for any files with the naming default convention `*.model.js`.
 
 ## Custom matcher
-If you prefer to define your own naming convention instead of the default you can create a custom matching function which receives the file name as the parameter returns a `boolean` indicating if sequelize-singleton should attempt to load the file as a model. 
+If you prefer to define your own naming convention instead of the default you can create a custom matching function which receives the file name as the parameter returns a `boolean` indicating if sequelize-connect should attempt to load the file as a model. 
 
 This function should be attached to `matcher` like so:
 
@@ -38,7 +38,7 @@ This function should be attached to `matcher` like so:
 orm.matcher = function(file){
   if(//some condition or regex here)
     return true;
-    
+
   return false;
 };
 ```
@@ -50,7 +50,7 @@ Now you can access the sequelize instance and models wherever you need!
 ```js
 // somefile.js
 
-var orm       = require('sequelize-singleton');
+var orm       = require('sequelize-connect');
 var sequelize = orm.sequelize;
 var Sequelize = orm.Sequelize;
 var models    = orm.models;
@@ -81,7 +81,7 @@ module.exports = function(sequelize, DataTypes) {
 ```
 
 
-## Logging 
+## Logging
 
 Logging can be turned off by setting `orm.logger = false`. Additionally, a custom logging function can be defined, which is passed a parameter `log`. E.g.
 
