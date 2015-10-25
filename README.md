@@ -25,12 +25,15 @@ orm.connect(
   {
     dialect: "mysql",
     port:    3306
+  })
+  .then(function(){
+    // Connection is completed
   });
 ```
-Upon `connect()` sequelize-connect will ***SYNCHRONOUSLY recurse*** through all of the subfolders located at the provided file paths looking for any files with the naming default convention `*.model.js`.
+Upon `connect()` sequelize-connect will ***ASYNCHRONOUSLY recurse*** through all of the subfolders located at the provided file paths looking for any files with the naming default convention `*.model.js`. Connect will return a Promise that is called on it's completion.
 
 ## Custom matcher
-If you prefer to define your own naming convention instead of the default you can create a custom matching function which receives the file name as the parameter returns a `boolean` indicating if sequelize-connect should attempt to load the file as a model. 
+If you prefer to define your own naming convention instead of the default you can create a custom matching function which receives the file name as the parameter returns a `boolean` indicating if sequelize-connect should attempt to load the file as a model.
 
 This function should be attached to `matcher` like so:
 
@@ -45,7 +48,7 @@ orm.matcher = function(file){
 
 
 ## Accessing sequelize
-Now you can access the sequelize instance and models wherever you need!
+After connecting you can access the sequelize instance and models wherever you need!
 
 ```js
 // somefile.js
@@ -83,10 +86,8 @@ module.exports = function(sequelize, DataTypes) {
 
 ## Logging
 
-Logging can be turned off by setting `orm.logger = false`. Additionally, a custom logging function can be defined, which is passed a parameter `log`. E.g.
+Logging is done via the [winston](https://github.com/winstonjs/winston), the winston object can be accessed at via `orm.logger`. If you want to control the log level you can do it like so:
 
 ```js
-orm.logger = function(log){
-  //do some sweet logging stuff here
-}
+orm.logger.level = "debug";
 ```
