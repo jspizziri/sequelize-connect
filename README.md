@@ -1,6 +1,8 @@
 # sequelize-connect
 
-Formerly [sequelize-singleton](https://github.com/jspizziri/sequelize-singleton) sequelize-connect is a simple singleton wrapper for the sequelize ORM, making it easier to configure and build models with Sequelize.
+Formerly [sequelize-singleton](https://github.com/jspizziri/sequelize-singleton).
+
+sequelize-connect is a simple singleton wrapper for the sequelize ORM, making it easier to configure and build models with Sequelize.
 
 * [Configuring sequelize-connect](#configuring-sequelize-connect)
   * [Connection String](#connection-string)
