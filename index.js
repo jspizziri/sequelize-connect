@@ -1,1 +1,1 @@
-module.exports = require('./lib/singleton');
+module.exports = require('./lib/connect');
