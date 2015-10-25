@@ -3,6 +3,7 @@
 sequelize-connect is a simple singleton wrapper for the sequelize ORM, making it easier to configure and build models with Sequelize.
 
 * [Configuring sequelize-connect](#configuring-sequelize-connect)
+  * [Connection String](#connection-string)
 * [Custom Matcher](#custom-matcher)
 * [Accessing Sequelize](#accessing-sequelize)
 * [Defining Models](#defining-models)
@@ -31,6 +32,22 @@ orm.connect(
   });
 ```
 Upon `connect()` sequelize-connect will ***ASYNCHRONOUSLY recurse*** through all of the subfolders located at the provided file paths looking for any files with the naming default convention `*.model.js`. Connect will return a Promise that is called on it's completion.
+
+#### Connection String
+You can use a connection string to connect as well:
+
+```js
+orm.connect(
+  'MyConnectionString',
+  {
+    dialect: "mysql",
+    port:    3306
+  })
+  .then(function(){
+    // Connection is completed
+  });
+```
+
 
 ## Custom matcher
 If you prefer to define your own naming convention instead of the default you can create a custom matching function which receives the file name as the parameter returns a `boolean` indicating if sequelize-connect should attempt to load the file as a model.
