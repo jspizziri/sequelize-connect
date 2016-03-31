@@ -110,3 +110,9 @@ Logging is done via the [winston](https://github.com/winstonjs/winston), the win
 ```js
 orm.logger.level = "debug";
 ```
+
+To disable logging entirely:
+
+```js
+orm.logger.level = null
+```
