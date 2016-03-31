@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/jspizziri/sequelize-connect.git"
   },
+  "scripts": {
+    "commit": "git-cz"
+  },
   "keywords": [
     "sequelize",
     "singleton",
@@ -21,6 +24,7 @@
   ],
   "dependencies": {
     "bluebird": "^2.10.2",
+    "commitizen": "^2.7.6",
     "lodash": "^3.10.1",
     "winston": "^1.1.1"
   },
