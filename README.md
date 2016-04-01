@@ -1,4 +1,5 @@
 # sequelize-connect
+[![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg)](http://commitizen.github.io/cz-cli/)
 
 Formerly [sequelize-singleton](https://github.com/jspizziri/sequelize-singleton).
 
@@ -10,6 +11,7 @@ sequelize-connect is a simple singleton wrapper for the sequelize ORM, making it
 * [Accessing Sequelize](#accessing-sequelize)
 * [Defining Models](#defining-models)
 * [Logging](#logging)
+* [Contributing](#contributing)
 
 ## Configuring sequelize-connect
 
@@ -116,3 +118,8 @@ To disable logging entirely:
 ```js
 orm.logger.level = null
 ```
+
+
+## Contributing
+
+Please read the [contributing guidlines](https://github.com/jspizziri/sequelize-connect/blob/master/CONTRIBUTING.md)
