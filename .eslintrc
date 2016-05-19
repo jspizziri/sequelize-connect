@@ -1,0 +1,38 @@
+{
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "es6": true,
+    "browser": true,
+    "mocha": true
+  },
+  "rules": {
+    "eqeqeq": 2,
+    "no-caller": 2,
+    "no-else-return": 2,
+    "no-eq-null": 2,
+    "quotes": "single",
+    "no-new-func": 2,
+    "camelcase": [2, "always"],
+    "brace-style": [2, "stroustrup", { "allowSingleLine": true }],
+    "strict": [2, "global"],
+    "comma-spacing": [2, {"before": false, "after": true}],
+    "indent": [2, 4],
+    "key-spacing": [2, { "beforeColon": false, "afterColon": true, "align": "value" }],
+    "no-mixed-spaces-and-tabs": [2, "smart-tabs"],
+    "space-before-blocks": [2, "always"],
+    "space-before-function-paren": [2, "always"],
+    "space-in-brackets": [2, "always", {
+      "singleValue": false,
+      "objectsInArrays": true,
+      "arraysInArrays": true,
+      "arraysInObjects": true,
+      "objectsInObjects": true,
+      "propertyName": false
+    }],
+    "space-in-parens": [2, "never"],
+    "space-infix-ops": 2,
+    "space-return-throw-case": 2,
+    "dot-notation": 0
+  }
+}

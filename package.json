@@ -1,11 +1,11 @@
 {
   "name": "sequelize-connect",
-  "version": "1.3.0",
+  "version": "2.0.0-alpha.1",
   "author": "Jacob Spizziri <jacob.spizziri@gmail.com> (https://github.com/jspizziri)",
   "license": "BSD-2-Clause",
   "description": "A simple connection wrapper for the sequelize ORM, making it easier to configure and build models & connections.",
   "homepage": "https://github.com/jspizziri/sequelize-singleton",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/jspizziri/sequelize-connect.git"
@@ -24,15 +24,23 @@
   ],
   "dependencies": {
     "bluebird": "^2.10.2",
-    "commitizen": "^2.7.6",
-    "lodash": "^3.10.1",
-    "winston": "^1.1.1"
+    "lodash": "^3.10.1"
   },
   "peerDependencies": {
     "sequelize": ">=2.0"
   },
   "devDependencies": {
-    "cz-conventional-changelog": "^1.1.5"
+    "babel-core": "^6.9.0",
+    "babel-eslint": "^6.0.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babelify": "^7.3.0",
+    "commitizen": "^2.7.6",
+    "cz-conventional-changelog": "^1.1.5",
+    "eslint": "^2.10.2",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean": "^0.3.2",
+    "gulp-sourcemaps": "^1.6.0"
   },
   "config": {
     "commitizen": {
