@@ -1,15 +1,11 @@
 'use strict';
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
+var _Connection = require('./lib/Connection');
 
-var _Connect = require('./lib/Connect');
-
-var _Connect2 = _interopRequireDefault(_Connect);
+var _Connection2 = _interopRequireDefault(_Connection);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-// Export Connect
-exports.default = _Connect2.default; // Import Connect
+// Export Connection
+module.exports = _Connection2.default; // Import Connect
 //# sourceMappingURL=index.js.map

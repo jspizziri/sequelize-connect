@@ -1,9 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _bluebird = require("bluebird");
@@ -26,7 +22,7 @@ var fs = _bluebird2.default.promisifyAll(_fs2.default);
 
 var Discoverable = function () {
   function Discoverable(paths, matcher) {
-    var logger = arguments.length <= 2 || arguments[2] === undefined ? console : arguments[2];
+    var logger = arguments.length <= 2 || arguments[2] === undefined ? false : arguments[2];
 
     _classCallCheck(this, Discoverable);
 
@@ -46,20 +42,20 @@ var Discoverable = function () {
   _createClass(Discoverable, [{
     key: "discover",
     value: function discover() {
+      var _this = this;
 
       var discovered = [];
 
       return _bluebird2.default.each(this.paths, function (location) {
-        var _this = this;
 
         // Recurse through the api directory and collect the models
-        return this._dive(location).then(function (results) {
-          _this.logger.log("debug", "Flattening results");
+        return _this._dive(location).then(function (results) {
+          _this._log("debug", "Flattening results");
           return _lodash2.default.flatten(results, true);
         }).filter(function (value) {
           return value !== false;
         }).then(function (results) {
-          _this.logger.log("debug", "Assigning filtered results to discover: " + results);
+          _this._log("debug", "Assigning filtered results to discover: " + results);
           return discovered = results;
         });
       }).then(function () {
@@ -89,10 +85,10 @@ var Discoverable = function () {
         } else {
             // Allow user to define a custom matcher function
             if (typeof _this2.matcher === 'function' && _this2.matcher(file) === true) {
-              _this2.logger.log("debug", "Discovered path: " + path);
+              _this2._log("debug", "Discovered path: " + path);
               return path;
             } else if (file.indexOf(".") !== 0 && file.indexOf(".model.js") > 0) {
-              _this2.logger.log("debug", "Discovered path: " + path);
+              _this2._log("debug", "Discovered path: " + path);
               return path;
             }
 
@@ -100,10 +96,22 @@ var Discoverable = function () {
           }
       });
     }
+
+    /**
+     * Attempt to log
+     * @param  {String} message Message to log
+     * @return {null}
+     */
+
+  }, {
+    key: "_log",
+    value: function _log(level, message) {
+      this.logger ? this.logger.log(level, message) : false;
+    }
   }]);
 
   return Discoverable;
 }();
 
-exports.default = Discoverable;
+module.exports = Discoverable;
 //# sourceMappingURL=Discoverable.js.map

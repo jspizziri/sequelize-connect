@@ -1,9 +1,5 @@
 "use strict";
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _bluebird = require("bluebird");
@@ -36,7 +32,7 @@ var Connection = function () {
     var options = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
     var discover = arguments.length <= 4 || arguments[4] === undefined ? ["/model"] : arguments[4];
     var matcher = arguments.length <= 5 || arguments[5] === undefined ? null : arguments[5];
-    var logger = arguments.length <= 6 || arguments[6] === undefined ? console : arguments[6];
+    var logger = arguments.length <= 6 || arguments[6] === undefined ? false : arguments[6];
 
     _classCallCheck(this, Connection);
 
@@ -54,7 +50,9 @@ var Connection = function () {
     this.models = {};
     this.Sequelize = _sequelize2.default; // Expose Sequelize
 
-    this._connect().then(function (connection) {
+    instance = this._connect();
+
+    return instance.then(function (connection) {
       return instance = connection;
     });
   }
@@ -73,10 +71,10 @@ var Connection = function () {
       // return the instance, although this shouldn't be being called externally
       if (instance) return instance;
 
-      this.logger.log("info", "Connecting to: " + this.database + " as: " + this.username);
+      this._log("info", "Connecting to: " + this.database + " as: " + this.username);
 
       // Instantiate a new sequelize instance
-      var sequelize = new db.Sequelize(this.database, this.username, this.password, this.options);
+      var sequelize = new this.Sequelize(this.database, this.username, this.password, this.options);
       var models = {};
 
       var dir = typeof this.discover === "string" ? [this.discover] : this.discover;
@@ -87,30 +85,30 @@ var Connection = function () {
         var model = sequelize["import"](path);
 
         if (model) {
-          _this.logger.log("debug", "Import for path succeeded: " + path);
+          _this._log("debug", "Import for path succeeded: " + path);
           models[model.name] = model;
         } else {
-          _this.logger.log("debug", "Import for path failed: " + path);
+          _this._log("debug", "Import for path failed: " + path);
         }
       }).then(function (path) {
         // Execute the associate methods for each Model
-        _this.logger.log("info", "Import completed");
+        _this._log("info", "Import completed");
 
         return _bluebird2.default.each(Object.keys(models), function (modelName) {
 
           if ("associate" in models[modelName]) {
-            _this.logger.log("debug", "Associating Model: " + modelName);
+            _this._log("debug", "Associating Model: " + modelName);
             models[modelName].associate(models);
           } else {
-            _this.logger.log("debug", "Nothing to associate for Model: " + modelName);
+            _this._log("debug", "Nothing to associate for Model: " + modelName);
           }
         });
       }).then(function () {
         // Syncronize the DB
-        _this.logger.log("info", "Finished connecting to: " + database + " as: " + username);
+        _this._log("info", "Finished connecting to: " + _this.database + " as: " + _this.username);
         return sequelize.sync();
       }).then(function () {
-        _this.logger.log("info", "Finished synchronizing " + database);
+        _this._log("info", "Finished synchronizing " + _this.database);
         // Expose objects
         _this.sequelize = sequelize;
         _this.models = models;
@@ -118,10 +116,22 @@ var Connection = function () {
         return _this;
       });
     }
+
+    /**
+     * Attempt to log
+     * @param  {String} message Message to log
+     * @return {null}
+     */
+
+  }, {
+    key: "_log",
+    value: function _log(level, message) {
+      this.logger ? this.logger.log(level, message) : false;
+    }
   }]);
 
   return Connection;
 }();
 
-exports.default = Connection;
-//# sourceMappingURL=Connect.js.map
+module.exports = Connection;
+//# sourceMappingURL=Connection.js.map
