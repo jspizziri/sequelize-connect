@@ -155,6 +155,7 @@ var Promise.resolve(orm)
 ## Defining Models
 
 Models are defined as per the suggestion the article here: http://sequelizejs.com/articles/express. All associations are done via the class method `associate` which is injected with the models object.
+
 ```js
 // user.model.js
 "use strict";
@@ -162,13 +163,12 @@ Models are defined as per the suggestion the article here: http://sequelizejs.co
 module.exports = function(sequelize, DataTypes) {
   var User = sequelize.define("User", {
     username: DataTypes.STRING
-  }, {
-    classMethods: {
-      associate: function(models) {
-        User.hasMany(models.Task)
-      }
-    }
   });
+
+  // class association method
+  User.associate = function(models) {
+    User.hasMany(models.Task);
+  }
 
   return User;
 };

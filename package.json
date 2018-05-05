@@ -27,7 +27,7 @@
     "lodash": "^3.10.1"
   },
   "peerDependencies": {
-    "sequelize": ">=2.0"
+    "sequelize": ">=4.0"
   },
   "devDependencies": {
     "babel-core": "^6.9.0",
