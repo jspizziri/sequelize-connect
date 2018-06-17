@@ -1,5 +1,5 @@
 // Import Connect
-import Connection from './lib/Connection';
+import Connection from './src/Connection';
 
 // Export Connection
 module.exports = Connection;
