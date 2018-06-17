@@ -27,7 +27,7 @@
   ],
   "dependencies": {
     "bluebird": "^2.10.2",
-    "lodash": "^3.10.1"
+    "lodash.flatten": "^4.4.0"
   },
   "peerDependencies": {
     "sequelize": ">=4.0"
