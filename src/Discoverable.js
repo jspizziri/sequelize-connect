@@ -63,7 +63,7 @@ class Discoverable {
         if(typeof this.matcher === 'function' && this.matcher(file) === true) {
           this._log("debug", "Discovered path: " + path);
           return path;
-        } else if((file.indexOf(".") !== 0) && (file.indexOf(".model.js") > 0)) {
+        } else if(/^[^.].*?\.model\.js$/.test(file)) {
           this._log("debug", "Discovered path: " + path);
           return path;
         }
