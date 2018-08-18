@@ -1,3 +1,13 @@
+<a name="2.1.2"></a>
+## [2.1.2](https://github.com/jspizziri/sequelize-connect/compare/v2.1.1...v2.1.2) (2018-08-18)
+
+
+### Bug Fixes
+
+* **Discoverable:** Prevent model discovery from including non-js files - Update filter for filename search ([baa9637](https://github.com/jspizziri/sequelize-connect/commit/baa9637))
+
+
+
 <a name="2.1.1"></a>
 ## [2.1.1](https://github.com/jspizziri/sequelize-connect/compare/v2.1.0...v2.1.1) (2018-06-17)
 

@@ -1,6 +1,6 @@
 {
   "name": "sequelize-connect",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "author": "Jacob Spizziri <jacob.spizziri@gmail.com> (https://github.com/jspizziri)",
   "license": "BSD-2-Clause",
   "description": "A simple connection wrapper for the sequelize ORM, making it easier to configure and build models & connections.",
